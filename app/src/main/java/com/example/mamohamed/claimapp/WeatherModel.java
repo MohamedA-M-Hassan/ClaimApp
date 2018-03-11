@@ -1,3 +1,5 @@
+package com.example.mamohamed.claimapp;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,6 +13,37 @@ public class WeatherModel {
     private String mTemprature;
     private int mCondition;
 
+    public String getmCity() {
+        return mCity;
+    }
+
+    public void setmCity(String mCity) {
+        this.mCity = mCity;
+    }
+
+    public String getmIcon() {
+        return mIcon;
+    }
+
+    public void setmIcon(String mIcon) {
+        this.mIcon = mIcon;
+    }
+
+    public String getmTemprature() {
+        return mTemprature;
+    }
+
+    public void setmTemprature(String mTemprature) {
+        this.mTemprature = mTemprature;
+    }
+
+    public int getmCondition() {
+        return mCondition;
+    }
+
+    public void setmCondition(int mCondition) {
+        this.mCondition = mCondition;
+    }
 
     public static  WeatherModel fromJson(JSONObject jsonObject){
         try {

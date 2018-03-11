@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mCityLabel;
     ImageView mWeatherImage;
     TextView mTempratureLabel;
-    TextView t;
+    //TextView t;
 
     // dECLARE a location manager and listner
 
@@ -85,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        t = (TextView) findViewById(R.id.txt);
+        mCityLabel = (TextView) findViewById(R.id.txt);
+        mTempratureLabel = (TextView) findViewById(R.id.tempratureText);
     }
 
     @Override
@@ -157,8 +158,9 @@ public class MainActivity extends AppCompatActivity {
         client.get(WEATHER_URL, params, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                t.setText(response.toString());
-
+             //   t.setText(response.toString());
+                WeatherModel weatherData = WeatherModel.fromJson(response);
+                updateUI(weatherData);
             }
 
             @Override
@@ -189,6 +191,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+
+
+    }
+    private void updateUI(WeatherModel weather ){
+        mTempratureLabel.setText(weather.getmTemprature());
+        mCityLabel.setText(weather.getmCity());
+
+        //int resource = getResources().getIdentifier(weather.getmIcon(),"drawable",getPackageName());
 
 
     }
